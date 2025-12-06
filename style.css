@@ -71,11 +71,13 @@ html, body {
 }
 
 #invoice-layout {
-  background: #ffffff;
-  min-height: 100vh;
+  background: #ffffff !important;
+  min-height: 140vh;
+  padding-bottom: 80px;
 }
 
 body {
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }
+
