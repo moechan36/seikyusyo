@@ -65,23 +65,3 @@ th {
   font-weight: bold;
 }
 
-/* ★ Safari PDFのグレー対策：全画面を完全な白で塗る */
-html, body {
-  background: #ffffff !important;
-  margin: 0;
-  padding: 0;
-}
-
-/* ★ ここが重要！PDF化時に十分な高さを確保する */
-#invoice-layout {
-  background: #ffffff !important;
-  min-height: 2000px;   /* ← ここが一番効く！Safariの誤認識を防ぐ */
-  padding-bottom: 40px;
-}
-
-/* ★ 印刷やPDF時に色が変わらないように */
-body {
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
-}
-
