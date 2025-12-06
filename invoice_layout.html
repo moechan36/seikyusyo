@@ -191,6 +191,31 @@ body {
       font-size: 11px;
       line-height: 1.6;
     }
+    
+
+/* 備考の黒帯 */
+.note-label {
+  background: #222;
+  color: #fff;
+  padding: 4px 10px; /* ← ここを小さくすると縦幅が細くなる！ */
+  font-weight: bold;
+  font-size: 14px;  /* ← 少し小さくすると黒帯が“締まる” */
+  letter-spacing: 2px;
+  box-sizing: border-box;
+}
+
+
+/* 備考の本文（白背景の箱） */
+.note-content {
+  padding: 10px 12px;
+  font-size: 13px;
+  white-space: pre-wrap; /* ← 改行を忠実に再現 */
+  border: 1.5px solid #444;
+  border-top: none; /* 黒帯と境界線が重複しないように */
+  box-sizing: border-box;
+}
+
+
   </style>
 </head>
 
@@ -258,10 +283,12 @@ TEL：080-5629-5688
       <tbody id="details-body"></tbody>
     </table>
 
-    <!-- 備考 -->
-<div class="note">
-※備考：<br>
-<pre id="note-text"></pre>
+<!-- 備考 -->
+<div class="note-section">
+  <div class="note-label">備　考</div>
+  <div class="note-content">
+    <pre id="note-text"></pre>
+  </div>
 </div>
 
   </div>
