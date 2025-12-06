@@ -1,0 +1,66 @@
+body {
+  font-family: "Yu Gothic", "Hiragino Sans", sans-serif;
+  padding: 20px;
+  margin: 0;
+  background: #f4f4f4;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+label {
+  font-weight: bold;
+  margin-top: 15px;
+  display: block;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+button {
+  background: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 12px;
+  margin-top: 25px;
+  border-radius: 5px;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+th {
+  background: #eee;
+  font-weight: bold;
+}

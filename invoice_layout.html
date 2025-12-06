@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>請求書プレビュー</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      font-family: "Yu Gothic", sans-serif;
+    }
+
+    #invoice {
+      width: 800px;
+      background: #fff;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+
+    /* タイトル */
+    .title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      letter-spacing: 10px;
+      margin-bottom: 20px;
+    }
+
+    /* 上段：宛名 / No・請求日 */
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 25px;
+    }
+
+    .client-name {
+      font-size: 22px;
+      font-weight: bold;
+      line-height: 1.4;
+    }
+
+    .right-header {
+      text-align: right;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .desc {
+      margin-bottom: 25px;
+      font-size: 15px;
+    }
+
+    /* ----------------------------------------------
+       左右2カラム（件名/作業日/合計 ←→ 〒情報）
+    ---------------------------------------------- */
+    .main-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 30px;
+    }
+
+    /* 左カラム（件名・作業日・合計） */
+    .left-block {
+      width: 55%;
+    }
+
+    /* 件名/作業日の黒帯＋白エリア（合計と同じ構造） */
+    .info-row {
+      display: flex;
+      width: 100%;
+      margin-bottom: 12px;
+      height: 42px;
+      border: 2px solid #222;
+      box-sizing: border-box;
+    }
+
+    .info-label {
+      width: 25%;
+      background: #222;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .info-value {
+      width: 75%;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    /* 合計枠（件名/作業日と同じ横構造） */
+    .total-box {
+      width: 100%;
+      height: 70px;
+      border: 3px solid #444;
+      display: flex;
+      margin-top: 10px;
+      box-sizing: border-box;
+    }
+
+    .total-label {
+      width: 25%;
+      background: #222;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    .total-amount {
+      width: 75%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    /* 右カラム（請求者情報） */
+    .right-block {
+  width: 40%;
+  text-align: right;
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre-line;
+  margin-top: -12px;   /* ★ 件名黒帯の上端に合わせて持ち上げる */
+}
+
+
+    /* 明細テーブル（1ページに収まるよう調整済み） */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      font-size: 12px;
+    }
+
+    th, td {
+      border: 1.5px solid #444;
+      padding: 3px 5px;
+      height: 20px;
+      text-align: left;
+    }
+
+    th {
+      background: #eee;
+      font-weight: bold;
+    }
+
+    .note {
+      font-size: 11px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="invoice">
+
+    <!-- タイトル -->
+    <div class="title">請　求　書</div>
+
+    <!-- 上段：宛名 / No・請求日 -->
+    <div class="header-row">
+      <div class="client-name" id="client-name">　御中</div>
+
+      <div class="right-header">
+        No：<span id="inv-no"></span><br>
+        請求日：<span id="inv-date"></span>
+      </div>
+    </div>
+
+    <div class="desc">下記のとおり、御請求申し上げます。</div>
+
+    <!-- 左右2カラム -->
+    <div class="main-row">
+
+      <!-- 左：件名 / 作業日 / 合計 -->
+      <div class="left-block">
+
+        <div class="info-row">
+          <div class="info-label">件　名</div>
+          <div class="info-value" id="subject"></div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-label">作業日</div>
+          <div class="info-value" id="work-date"></div>
+        </div>
+
+        <div class="total-box">
+          <div class="total-label">合　計</div>
+          <div class="total-amount"><span id="total"></span> 円</div>
+        </div>
+
+      </div>
+
+      <!-- 右：請求者情報 -->
+      <div class="right-block">〒612-8448
+京都市竹田東小屋ノ内町104
+TEL：080-5629-5688
+松本 祐紀
+      </div>
+
+    </div>
+
+    <!-- 明細表 -->
+    <table>
+      <thead>
+        <tr>
+          <th>摘要</th>
+          <th style="width:80px;">数量</th>
+          <th style="width:80px;">単位</th>
+          <th style="width:120px;">単価</th>
+          <th style="width:150px;">金額</th>
+        </tr>
+      </thead>
+      <tbody id="details-body"></tbody>
+    </table>
+
+    <!-- 備考 -->
+    <div class="note">
+※備考：<br>
+領収書につきましては、金融機関の振込明細書をもって代えさせて頂きます。
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
