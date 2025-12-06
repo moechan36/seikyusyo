@@ -64,3 +64,11 @@ th {
   background: #eee;
   font-weight: bold;
 }
+
+html, body {
+  background: #ffffff !important;
+}
+
+#invoice-layout {
+  background: #ffffff;
+}
