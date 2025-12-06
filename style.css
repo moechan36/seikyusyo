@@ -67,8 +67,15 @@ th {
 
 html, body {
   background: #ffffff !important;
+  height: 100%;
 }
 
 #invoice-layout {
   background: #ffffff;
+  min-height: 100vh;
+}
+
+body {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
