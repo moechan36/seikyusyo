@@ -28,7 +28,7 @@ if (location.pathname.includes("index.html") || location.pathname.endsWith("/"))
     }
   };
 
-  // プレビューへ遷移
+  // ▼ プレビューへ遷移
   function goPreview() {
     const params = new URLSearchParams();
 
@@ -37,6 +37,9 @@ if (location.pathname.includes("index.html") || location.pathname.endsWith("/"))
     params.append("workDate", document.getElementById("workDate").value);
     params.append("invoiceNo", document.getElementById("invoiceNo").value);
     params.append("invoiceDate", document.getElementById("invoiceDate").value);
+
+    // ▼ 備考を追加
+    params.append("note", document.getElementById("note").value);
 
     for (let i = 1; i <= 10; i++) {
       params.append(`item${i}`,  document.getElementById(`item${i}`).value);
@@ -65,6 +68,9 @@ if (location.pathname.includes("invoice_layout.html")) {
     document.getElementById("client-name").textContent= p.get("clientName");
     document.getElementById("subject").textContent    = p.get("subject");
     document.getElementById("work-date").textContent  = p.get("workDate");
+
+    // ▼ 備考の反映
+    document.getElementById("note-text").textContent = p.get("note") || "";
 
     let total = 0;
     const tbody = document.getElementById("details-body");

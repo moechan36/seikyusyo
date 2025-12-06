@@ -28,6 +28,10 @@
   <label>請求日</label>
   <input type="date" id="invoiceDate">
 
+  <!-- ▼ 備考欄（追加） -->
+  <label>備考</label>
+  <textarea id="note" rows="4" style="width:100%; font-size:16px;"></textarea>
+
   <h3>明細（最大10行）</h3>
 
   <table>
@@ -39,6 +43,7 @@
         <th>単価</th>
       </tr>
     </thead>
+
     <tbody id="detailRows"></tbody>
   </table>
 
@@ -73,6 +78,8 @@
     }
   };
 </script>
-<script src="./script.js?v=20001"></script>
+
+<script src="./script.js?v=30002"></script>
+
 </body>
 </html>
