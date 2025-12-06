@@ -209,11 +209,15 @@ body {
 .note-content {
   padding: 10px 12px;
   font-size: 13px;
-  white-space: pre-wrap; /* ← 改行を忠実に再現 */
+  white-space: pre-wrap;
   border: 1.5px solid #444;
-  border-top: none; /* 黒帯と境界線が重複しないように */
+  border-top: none;
   box-sizing: border-box;
+
+  height: 60px;         /* ← ★ これを追加！高さを固定 */
+  overflow: hidden;     /* ← ★ はみ出し防止（必要なら） */
 }
+
 
 
   </style>
